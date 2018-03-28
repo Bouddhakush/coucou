@@ -16,11 +16,11 @@ class CreateUtilisateursTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id_user');
             $table->string('nom_user', 30);
-            $table->string('prenom_user', 30);
-            $table->string('login_user', 30);
             $table->string('password_user', 15);
+            $table->rememberToken();
             $table->boolean('is_admin');
             $table->boolean('is_manager');
+            $table->timestamps();
         });
     }
 

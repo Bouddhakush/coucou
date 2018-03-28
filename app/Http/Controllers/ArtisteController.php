@@ -7,79 +7,48 @@ use Illuminate\Http\Request;
 
 class ArtisteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return Artiste::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Artiste  $artiste
-     * @return \Illuminate\Http\Response
-     */
     public function show(Artiste $artiste)
     {
-        //
+        return $artiste;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Artiste  $artiste
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Artiste $artiste)
+    public function store(Request $request)
     {
-        //
+        $artiste = Artiste::create($request->all());
+
+        return response()->json($artiste, 201);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Artiste  $artiste
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Artiste $artiste)
     {
-        //
+        $artiste->update($request->all());
+
+        return response()->json($artiste, 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Artiste  $artiste
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Artiste $artiste)
+    public function delete(Artiste $artiste)
     {
-        //
+        $artiste->delete();
+
+        return response()->json(null, 204);
     }
+
+
+    //--------------------------------------
+/*
+    function displayAllArtists() {
+        return Artiste::all();
+    }
+
+    function getArtist(Request $request) {
+        $artiste = Artiste::where('id_artiste', '=', $request->route('id_artiste'))->get();
+        return $artiste;
+    } */
+
+
 }

@@ -13,21 +13,37 @@ class CreateLiaisonLabelArtistesTable extends Migration
      */
     public function up()
     {
-        Schema::create('liaison__label_artistes', function (Blueprint $table) {
-            $table->integer('id_label')->unsigned()->index();
-            $table->foreign('id_label')->references('id_label')->on('labels')->onDelete('cascade');
-            $table->integer('id_artiste')->unsigned()->index();
-            $table->foreign('id_artiste')->references('id_artiste')->on('artistes')->onDelete('cascade');
+        /*Schema::create('liaison_labels_artistes', function (Blueprint $table) {
+            $table->integer('id_label')->unsigned();
+            $table->integer('id_artiste')->unsigned();
         });
+
+        Schema::table('liaison_labels_artistes', function($table) {
+            $table->foreign('id_label')->references('id_label')->on('labels')->onDelete('cascade');
+            $table->foreign('id_artiste')->references('id_artiste')->on('artistes')->onDelete('cascade');
+        });*/
+        Schema::create('liaison_labels_artistes', function (Blueprint $table) {
+            $table->increments('id_liaison');
+            $table->integer('id_label')->unsigned();
+            $table->integer('id_artiste')->unsigned();
+            $table->timestamps();
+        });
+
+        Schema::table('liaison_labels_artistes', function($table) {
+            $table->foreign('id_label')->references('id_label')->on('labels')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_artiste')->references('id_artiste')->on('artistes')->onDelete('cascade')->onUpdate('cascade');
+        });
+
+        Schema::enableForeignKeyConstraints();
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+/**
+* Reverse the migrations.
+*
+* @return void
+*/
     public function down()
     {
-        Schema::dropIfExists('liaison__label_artistes');
+        Schema::dropIfExists('liaison_labels_artistes');
     }
 }

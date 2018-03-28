@@ -6,26 +6,27 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateArtistesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('artistes', function (Blueprint $table) {
-            $table->increments('id_artiste');
-            $table->string('nom_artiste', 50);
-        });
-    }
+/**
+ * Run the migrations.
+ *
+ * @return void
+ */
+public function up()
+{
+    Schema::create('artistes', function (Blueprint $table) {
+        $table->increments('id_artiste');
+        $table->string('nom_artiste', 50);
+        $table->timestamps();
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('artistes');
-    }
+/**
+ * Reverse the migrations.
+ *
+ * @return void
+ */
+public function down()
+{
+    Schema::dropIfExists('artistes');
+}
 }
