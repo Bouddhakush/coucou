@@ -13,10 +13,10 @@ class CreateUtilisateursTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id_user');
-            $table->string('nom_user', 30);
-            $table->string('password_user', 15);
+        Schema::create('utilisateurs', function (Blueprint $table) {
+            $table->increments('id_utilisateur');
+            $table->string('nom_utilisateur', 30);
+            $table->string('password_utilisateur', 15);
             $table->rememberToken();
             $table->boolean('is_admin');
             $table->boolean('is_manager');
@@ -31,6 +31,6 @@ class CreateUtilisateursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('utilisateurs');
     }
 }

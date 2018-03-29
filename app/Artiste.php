@@ -10,5 +10,7 @@ class Artiste extends Model
     {
         return $this->belongsToMany('labels');
     }*/
-    protected $fillable = ['nom_artiste'];
+    protected $fillable = [
+        'nom_artiste'
+    ];
 }

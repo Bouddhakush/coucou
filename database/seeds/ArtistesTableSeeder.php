@@ -11,18 +11,20 @@ class ArtistesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Artiste::truncate();
+        DB::table('artistes')->insert((array(
+            'nom_artiste' => 'Guytoon Massive Serotonia'
+        )));
 
-        $faker = \Faker\Factory::create();
+        DB::table('artistes')->insert((array(
+            'nom_artiste' => 'Bouddhakush'
+        )));
 
-       /* \App\Artiste::created([
-            'nom_ariste' => 'Jean-Louis',
-        ]);*/
+        DB::table('artistes')->insert((array(
+            'nom_artiste' => 'AlissK'
+        )));
 
-        for ($i = 0; $i < 50; $i++) {
-            \App\Artiste::create([
-               'nom_artiste' => $faker->sentence('1')
-            ]);
-        }
+        DB::table('artistes')->insert((array(
+            'nom_artiste' => 'Ora Bora'
+        )));
     }
 }

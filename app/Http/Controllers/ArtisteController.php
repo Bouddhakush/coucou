@@ -12,30 +12,38 @@ class ArtisteController extends Controller
         return Artiste::all();
     }
 
-    public function show(Artiste $artiste)
+    public function show(Request $request)
     {
+        $artiste = Artiste::where('id_artiste', '=', $request->route('id_artiste'))->get();
         return $artiste;
     }
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        $artiste = Artiste::create($request->all());
+        $newArtist = Artiste::create(array(
+            'nom_artiste' => $request->input('nom_artiste')
+        ));
 
-        return response()->json($artiste, 201);
+        return response()->json($newArtist, 210);
     }
 
-    public function update(Request $request, Artiste $artiste)
+    public function update(Request $request)
     {
-        $artiste->update($request->all());
+        $artiste = Artiste::where('id_artiste', '=', $request->route('id_artiste'))->first();
 
-        return response()->json($artiste, 200);
+        $artiste->nom_artiste = $request->input('nom_artiste');
+
+        $artiste->save();
+
+        return $artiste;
     }
 
-    public function delete(Artiste $artiste)
+    public function delete(Request $request)
     {
+        $artiste = Artiste::where('id_artiste', '=', $request->route('id_artiste'))->first();
         $artiste->delete();
 
-        return response()->json(null, 204);
+        return [];
     }
 
 

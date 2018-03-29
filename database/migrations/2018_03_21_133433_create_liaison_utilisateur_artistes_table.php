@@ -14,10 +14,10 @@ class CreateLiaisonUtilisateurArtistesTable extends Migration
     public function up()
     {
         Schema::create('liaison_utilisateur_artistes', function (Blueprint $table) {
-            $table->integer('id_user')->unsigned()->index();
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+            $table->integer('id_utilisateur')->unsigned()->index();
+            $table->foreign('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')->onDelete('cascade');
             $table->integer('id_artiste')->unsigned()->index();
-            $table->foreign('id_artiste')->references('id_artiste')->on('artistes')->onDelete('cascade');
+            $table->foreign('id_artiste')->references('id_utilisateur')->on('utilisateurs')->onDelete('cascade');
         });
     }
 

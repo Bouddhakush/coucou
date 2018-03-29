@@ -14,7 +14,7 @@ class Utilisateur extends Model
      * @var array
      */
     protected $fillable = [
-        'nom_user', 'password_user', 'is_admin', 'is_manager',
+        'nom_utilisateur', 'password_utilisateur', 'is_admin', 'is_manager',
     ];
 
     /**

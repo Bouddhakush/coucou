@@ -7,79 +7,23 @@ use Illuminate\Http\Request;
 
 class SonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return Son::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function show(Request $request)
     {
-        //
+        $son = Son::where('id_son', '=', $request->route('id_son'))->get();
+        return $son;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        //
-    }
+        $newSon = Son::create(array(
+            'nom_son' => $request->input('nom_son')
+        ));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Son  $son
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Son $son)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Son  $son
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Son $son)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Son  $son
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Son $son)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Son  $son
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Son $son)
-    {
-        //
+        return response()->json($newSon, 210);
     }
 }

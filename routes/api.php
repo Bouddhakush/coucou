@@ -17,12 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });*/
 
 
-Route::get('/', function (Request $request) {
-    return 'lol';
-});
 
+//Artistes
 Route::get('/artistes', 'ArtisteController@index');
 Route::get('/artistes/{id_artiste}', 'ArtisteController@show');
-Route::post('/artistes', 'ArtisteController@store');
-Route::put('/artistes/{id_artiste}', 'ArtisteController@update');
-Route::delete('/artistes/{id}', 'ArtisteController@delete');
+Route::post('/artistes', 'ArtisteController@create');
+Route::post('/artistes/{id_artiste}', 'ArtisteController@update');
+Route::delete('/artistes/{id_artiste}', 'ArtisteController@delete');
+
+//Labels

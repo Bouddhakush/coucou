@@ -33,8 +33,6 @@ class CreateLiaisonLabelArtistesTable extends Migration
             $table->foreign('id_label')->references('id_label')->on('labels')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_artiste')->references('id_artiste')->on('artistes')->onDelete('cascade')->onUpdate('cascade');
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
 /**

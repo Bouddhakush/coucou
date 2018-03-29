@@ -11,19 +11,17 @@ class LabelsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Label::truncate();
+        DB::table('labels')->insert((array(
+            'nom_label' => 'Beats Per Inch'
+        )));
 
-        $faker = \Faker\Factory::create();
+        DB::table('labels')->insert((array(
+            'nom_label' => 'Issou Lab'
+        )));
 
-        /* \App\Artiste::created([
-             'nom_ariste' => 'Jean-Louis',
-         ]);*/
-
-        for ($i = 0; $i < 50; $i++) {
-            \App\Label::create([
-                'nom_label' => $faker->sentence('1')
-            ]);
-        }
+        DB::table('labels')->insert((array(
+            'nom_label' => 'Label O'
+        )));
     }
 }
 

@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Son extends Model
 {
-    //
+    protected $fillable = [
+        'nom_son'
+    ];
 }
