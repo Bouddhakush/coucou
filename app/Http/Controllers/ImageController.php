@@ -14,7 +14,7 @@ class ImageController extends Controller
 
     public function show(Request $request)
     {
-        $image= Image::where('id_image', '=', $request->route('id_image'))->get();
+        $image = Image::where('id_image', '=', $request->route('id_image'))->get();
         return $image;
     }
 
