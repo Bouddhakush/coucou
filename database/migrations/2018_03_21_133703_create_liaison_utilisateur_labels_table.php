@@ -14,9 +14,14 @@ class CreateLiaisonUtilisateurLabelsTable extends Migration
     public function up()
     {
         Schema::create('liaison_utilisateur_labels', function (Blueprint $table) {
-            $table->integer('id_utilisateur')->unsigned()->index();
+            $table->increments('id_liaison');
+            $table->integer('id_utilisateur')->unsigned();
+            $table->integer('id_label')->unsigned();
+            $table->timestamps();
+        });
+
+        Schema::table('liaison_utilisateur_labels', function($table) {
             $table->foreign('id_utilisateur')->references('id_utilisateur')->on('utilisateurs')->onDelete('cascade');
-            $table->integer('id_label')->unsigned()->index();
             $table->foreign('id_label')->references('id_label')->on('labels')->onDelete('cascade');
         });
     }

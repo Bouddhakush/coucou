@@ -14,9 +14,14 @@ class CreateLiaisonOeuvreGenresTable extends Migration
     public function up()
     {
         Schema::create('liaison_oeuvre_genres', function (Blueprint $table) {
-            $table->integer('id_oeuvre')->unsigned()->index();
+            $table->increments('id_liaison');
+            $table->integer('id_oeuvre')->unsigned();
+            $table->integer('id_genre')->unsigned();
+            $table->timestamps();
+        });
+
+        Schema::table('liaison_oeuvre_genres', function($table) {
             $table->foreign('id_oeuvre')->references('id_oeuvre')->on('oeuvres')->onDelete('cascade');
-            $table->integer('id_genre')->unsigned()->index();
             $table->foreign('id_genre')->references('id_genre')->on('genres')->onDelete('cascade');
         });
     }

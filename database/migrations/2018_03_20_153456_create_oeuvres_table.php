@@ -16,6 +16,7 @@ class CreateOeuvresTable extends Migration
         Schema::create('oeuvres', function (Blueprint $table) {
             $table->increments('id_oeuvre');
             $table->string('nom_oeuvre', 50);
+            $table->timestamps();
         });
     }
 

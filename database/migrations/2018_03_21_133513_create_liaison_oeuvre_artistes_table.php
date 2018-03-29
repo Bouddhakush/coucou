@@ -14,9 +14,14 @@ class CreateLiaisonOeuvreArtistesTable extends Migration
     public function up()
     {
         Schema::create('liaison_oeuvre_artistes', function (Blueprint $table) {
-            $table->integer('id_oeuvre')->unsigned()->index();
+            $table->increments('id_liaison');
+            $table->integer('id_oeuvre')->unsigned();
+            $table->integer('id_artiste')->unsigned();
+            $table->timestamps();
+        });
+
+        Schema::table('liaison_oeuvre_artistes', function($table) {
             $table->foreign('id_oeuvre')->references('id_oeuvre')->on('oeuvres')->onDelete('cascade');
-            $table->integer('id_artiste')->unsigned()->index();
             $table->foreign('id_artiste')->references('id_artiste')->on('artistes')->onDelete('cascade');
         });
     }

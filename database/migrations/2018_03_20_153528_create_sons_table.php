@@ -15,7 +15,8 @@ class CreateSonsTable extends Migration
     {
         Schema::create('sons', function (Blueprint $table) {
             $table->increments('id_son');
-            $table->string('nom_son', 25);
+            $table->string('nom_son');
+            $table->timestamps();
         });
     }
 
